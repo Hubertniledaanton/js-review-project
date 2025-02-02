@@ -14,13 +14,13 @@ function renderTodos() {
     todos.forEach((todo, index) => {
         const li = document.createElement('li'); 
         li.className = 'todo-item'; 
-        li.innerHTML = '
+        li.innerHTML = `
             <span>${todo}</span>
             <button onclick="editTodo(${index})">Edit</button>
             <button onclick="deleteTodo(${index})">Delete</button>
-        ';
+        `;
         todoList.appendChild(li);
-    }
+    });
 }
 
 // Function to add a new todo
@@ -28,25 +28,25 @@ function addTodo(event) {
     event.preventDefault(); //Prevent from submission
     const newTodo = todoInput.value.trim();
     if (newTodo) {
-        todo.push(newTodo);
+        todos.push(newTodo);  // Corrected the variable name here
         todoInput.value = ''; // Clear input
         renderTodos();
     }
 }
 
-//Function to edit a todo
-fuction editTodo(index) {
-    const updatedTodo = prompt ('Edit your todo:', todos[index]);
+// Function to edit a todo
+function editTodo(index) {
+    const updatedTodo = prompt('Edit your todo:', todos[index]);
     if (updatedTodo !== null) {
-        todo[index] = updatedTodo.trim();
+        todos[index] = updatedTodo.trim();  // Corrected the variable name here
         renderTodos();
     }
 }
 
 // Function to delete a todo
 function deleteTodo(index) {
-    if (confirm('Are you sure you want to delete this todo')) {
-        todo.splice(index, 1);
+    if (confirm('Are you sure you want to delete this todo?')) {  // Fixed the prompt
+        todos.splice(index, 1);  // Corrected the variable name here
         renderTodos();
     }
 }
@@ -54,5 +54,5 @@ function deleteTodo(index) {
 // Event Listeners
 todoForm.addEventListener('submit', addTodo);
 
-//Initial render
+// Initial render
 renderTodos();
