@@ -34,7 +34,7 @@ function addTodo(event) {
     }
 }
 
-// Function to edit a todo
+/// Function to edit a todo
 function editTodo(index) {
     const updatedTodo = prompt('Edit your todo:', todos[index]);
     if (updatedTodo !== null) {
